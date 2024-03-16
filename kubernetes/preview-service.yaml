@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: nextjs-app-preview
-  namespace: nextjs-app
+  name: service-hub-app-preview
+  namespace: service-hub-ns
 spec:
   selector:
-    app: nextjs-app
+    app: service-hub-app
     version: green
   ports:
     - protocol: TCP

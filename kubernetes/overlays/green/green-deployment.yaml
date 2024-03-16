@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nextjs-app-green
-  namespace: nextjs-app
+  name: service-hub-app-green
+  namespace: service-hub-ns
   labels:
-    app: nextjs-app
+    app: service-hub-app
     version: green
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: nextjs-app
+      app: service-hub-app
       version: green
   template:
     metadata:
       labels:
-        app: nextjs-app
+        app: service-hub-app
         version: green
     spec:
       containers:
