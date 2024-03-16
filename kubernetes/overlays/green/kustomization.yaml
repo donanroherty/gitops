@@ -4,4 +4,4 @@ resources:
   - green-rollout.yaml
 images:
   - name: ghcr.io/donanroherty/turborepo-github-actions/site
-    newTag: v1.0.1
+    newTag: release-v1.0.1

@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
   name: service-hub-app-blue
-  namespace: service-hub-ns
+  namespace: argocd
 spec:
   replicas: 3
   selector:

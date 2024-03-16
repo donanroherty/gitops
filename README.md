@@ -11,6 +11,9 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 kubectl create namespace argo-rollouts
 kubectl apply -n argo-rollouts -f https://github.com/argoproj/argo-rollouts/releases/latest/download/install.yaml
 
+# Add the argocd cluster
+argocd cluster add docker-desktop
+
 # launch the argocd server
 kubectl port-forward svc/argocd-server -n argocd 8080:443
 

@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: service-hub-app
-  namespace: service-hub-ns
+  namespace: argocd
 spec:
   replicas: 3
   selector:
@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: site
-        image: ghcr.io/donanroherty/turborepo-github-actions/site:staging
+        image: ghcr.io/donanroherty/turborepo-github-actions/site:latest
         ports:
         - containerPort: 3000
       imagePullSecrets:
