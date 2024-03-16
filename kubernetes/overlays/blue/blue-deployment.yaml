@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nextjs-app-blue
+  namespace: argocd
+  labels:
+    app: nextjs-app
+    version: blue
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nextjs-app
+      version: blue
+  template:
+    metadata:
+      labels:
+        app: nextjs-app
+        version: blue
+    spec:
+      containers:
+      - name: site
+        image: ghcr.io/donanroherty/turborepo-github-actions/site:blue
+        ports:
+        - containerPort: 3000

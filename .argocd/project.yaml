@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: nextjs-project
+  namespace: argocd
+spec:
+  description: Project for Next.js application and related services
+  sourceRepos:
+    - '*'
+  destinations:
+    - namespace: nextjs-app
+      server: https://kubernetes.default.svc
+  roles:
+    - name: read-only
+      description: Read-only access to the project
+      policies:
+        - p, proj:nextjs-project:read-only, applications, get, nextjs-project/*, allow
+        - p, proj:n
