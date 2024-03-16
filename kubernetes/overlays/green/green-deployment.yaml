@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nextjs-app-green
-  namespace: argocd
+  namespace: nextjs-app
   labels:
     app: nextjs-app
     version: green

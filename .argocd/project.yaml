@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: nextjs-project
-  namespace: argocd
+  namespace: nextjs-app
 spec:
   description: Project for Next.js application and related services
   sourceRepos:

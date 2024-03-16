@@ -2,12 +2,12 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: site-staging-blue
-  namespace: argocd
+  namespace: nextjs-app
 spec:
   project: nextjs-project
   source:
     repoURL: https://github.com/donanroherty/gitops.git
-    # targetRevision: main
+    targetRevision: main
     path: kubernetes/overlays/blue
     kustomize:
       images:

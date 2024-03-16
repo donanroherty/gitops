@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nextjs-app
-  namespace: argocd
+  namespace: nextjs-app
 spec:
   replicas: 3
   selector:
