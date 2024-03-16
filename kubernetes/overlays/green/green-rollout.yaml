@@ -1,11 +1,8 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 metadata:
   name: service-hub-app-green
   namespace: service-hub-ns
-  labels:
-    app: service-hub-app
-    version: green
 spec:
   replicas: 3
   selector:
@@ -20,6 +17,11 @@ spec:
     spec:
       containers:
       - name: site
-        image: ghcr.io/donanroherty/turborepo-github-actions/site:green
+        image: ghcr.io/donanroherty/turborepo-github-actions/site
         ports:
         - containerPort: 3000
+  strategy:
+    blueGreen:
+      activeService: service-hub-app-active
+      previewService: service-hub-app-preview
+      autoPromotionEnabled: true

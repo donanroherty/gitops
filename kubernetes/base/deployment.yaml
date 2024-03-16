@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: site
-        image: ghcr.io/donanroherty/turborepo-github-actions/site:latest
+        image: ghcr.io/donanroherty/turborepo-github-actions/site:staging
         ports:
         - containerPort: 3000
       imagePullSecrets:

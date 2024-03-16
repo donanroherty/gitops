@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: service-hub-root
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/donanroherty/gitops.git'
+    path: 'apps/root'
+    targetRevision: HEAD
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: service-hub-ns
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true

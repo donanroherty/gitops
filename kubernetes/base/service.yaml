@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-hub-app
+  namespace: service-hub-ns
+spec:
+  selector:
+    app: service-hub-app
+    version: blue
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+      nodePort: 32173
+  type: NodePort
