@@ -1,19 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: service-hub-app-green
+  name: service-hub-app
   namespace: argocd
 spec:
   replicas: 3
   selector:
     matchLabels:
       app: service-hub-app
-      version: green
+      version: blue
   template:
     metadata:
       labels:
         app: service-hub-app
-        version: green
+        version: blue
     spec:
       containers:
       - name: site
@@ -22,6 +22,6 @@ spec:
         - containerPort: 3000
   strategy:
     blueGreen:
-      activeService: service-hub-app-active
-      previewService: service-hub-app-preview
-      autoPromotionEnabled: true
+      activeService: rollout-bluegreen-active
+      previewService: rollout-bluegreen-preview
+      autoPromotionEnabled: false

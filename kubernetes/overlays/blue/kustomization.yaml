@@ -1,7 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - blue-rollout.yaml
+  - rollout.yaml
 images:
   - name: ghcr.io/donanroherty/turborepo-github-actions/site
     newTag: release-v1.0.1
