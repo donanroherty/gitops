@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define an array of folder names
-folders=(".argocd" "kubernetes")
+folders=(".argocd" "kubernetes" ".github/workflows")
 
 # Function to process files recursively
 process_files() {
@@ -30,6 +30,12 @@ for folder in "${folders[@]}"; do
             ;;
         "kubernetes")
             process_files "$folder" "Kubernetes YAML files"
+            ;;
+    esac
+
+    case "$folder" in
+        ".github/workflows")
+            process_files "$folder" "Github workflow YAML files"
             ;;
     esac
 done

@@ -20,6 +20,8 @@ spec:
         image: ghcr.io/donanroherty/turborepo-github-actions/site
         ports:
         - containerPort: 3000
+      imagePullSecrets:
+        - name: ghcr-auth
   strategy:
     blueGreen:
       activeService: rollout-bluegreen-active

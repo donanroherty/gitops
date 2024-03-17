@@ -2,7 +2,7 @@
 
 ## Setup Argo CD
 
-```bash
+```sh
 # Create the argocd namespace and install argocd
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
@@ -34,10 +34,28 @@ argocd login localhost:8080
 argocd account update-password
 ```
 
+## Secret management
+```sh
+brew install helm
+
+helm repo add sealed-secrets https://bitnami-labs.github.io/sealed-secrets
+helm install sealed-secrets sealed-secrets/sealed-secrets -n kube-system
+
+brew install kubeseal
+
+kubeseal --format yaml --controller-name=sealed-secrets < kubernetes/ghcr-auth-secret.yaml > ghcr-auth-sealed-secret.yaml
+```
+
+```sh
+# create a base64 verion of the kubeconfig and add it to secrets.KUBECONFIG_BASE64 in github
+cat ~/.kube/config | base64
+
+```
+
 
 ## Setup project
 
-```bash
+```sh
 # Create the service-hub namespace and install the service-hub
 kubectl apply -f kubernetes/namespace.yaml
 
@@ -55,7 +73,7 @@ kubectl apply -k kubernetes/overlays/blue
 
 ### Manage contexts
 
-```bash
+```sh
 # show current context
 kubectl config current-context
 

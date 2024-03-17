@@ -1,0 +1,9 @@
+{
+  "auths": {
+    "ghcr.io": {
+      "username": "donanroherty",
+      "password": "<personal access token>",
+      "auth": "<bas64 encoded 'username:password'>"
+    }
+  }
+}
