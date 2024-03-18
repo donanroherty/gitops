@@ -17,8 +17,11 @@ brew install hashicorp/tap/terraform
 
 ```sh
 export KUBE_CONFIG_PATH=~/.kube/config
-kind delete cluster
-kind create cluster
+kind delete cluster -n gitops
+kind create cluster -n gitops
+
+chmod +x terraform/setup
+terraform/setup
 
 cd terraform
 terraform init
@@ -51,7 +54,7 @@ kubectl port-forward svc/argocd-server -n argocd 8080:443   # launch the argocd 
 ## Secret management
 ```sh
 
-kubeseal --format yaml --controller-name=sealed-secrets < kubernetes/secrets/ghcr-auth-secret.yaml > kubernetes/secrets/ghcr-auth-sealed-secret.yaml
+kubeseal --format yaml --controller-name=sealed-secrets-controller < kubernetes/secrets/ghcr-auth-secret.yaml > kubernetes/secrets/ghcr-auth-sealed-secret.yaml
 ```
 
 ```sh

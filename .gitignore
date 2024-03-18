@@ -1,7 +1,8 @@
 output.txt
 *.env
-.terraform
+.terraform*
 .terraform.lock.hcl
 terraform.tfstate*
+
 
 kubernetes/secrets/ghcr-auth-secret.yaml

@@ -49,3 +49,26 @@ minimal_kubeconfig = base64.b64encode(yaml.dump(minimal_kubeconfig).encode("utf-
 print(minimal_kubeconfig)
 
 print(f"Minimal kubeconfig saved to {output_file}")
+
+
+# Generate sealed secret for ArgoCD credentials
+with open("kubernetes/sealed-secrets/argocd-secrets.yaml", "r") as f:
+    argocd_secrets = yaml.safe_load(f)
+
+sealed_secret = {
+    "apiVersion": "bitnami.com/v1alpha1",
+    "kind": "SealedSecret",
+    "metadata": {
+        "name": "argocd-secrets",
+        "namespace": "argocd",
+    },
+    "spec": {
+        "encryptedData": {
+            "admin.password": base64.b64encode(argocd_secrets["stringData"]["admin.password"].encode("utf-8")).decode("utf-8"),
+            "admin.username": base64.b64encode(argocd_secrets["stringData"]["admin.username"].encode("utf-8")).decode("utf-8"),
+        },
+    },
+}
+
+with open("kubernetes/sealed-secrets/argocd-sealed-secrets.yaml", "w") as f:
+    yaml.dump(sealed_secret, f)

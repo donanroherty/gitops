@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cmd-params-cm
+  namespace: argocd
+data:
+  admin.username: "$ARGO_USERNAME"
+  admin.password: "$ARGO_PASSWORD"
