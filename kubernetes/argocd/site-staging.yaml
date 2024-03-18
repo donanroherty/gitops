@@ -1,14 +1,13 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: site-production
+  name: site-staging
   namespace: argocd
 spec:
   project: service-hub-project
   source:
     repoURL: https://github.com/donanroherty/gitops.git
-    path: kubernetes/overlays/blue
-    targetRevision: HEAD
+    path: kubernetes/overlays/staging
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd

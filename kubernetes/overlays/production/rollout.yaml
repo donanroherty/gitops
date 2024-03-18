@@ -8,12 +8,12 @@ spec:
   selector:
     matchLabels:
       app: service-hub-app
-      version: blue
+      version: production
   template:
     metadata:
       labels:
         app: service-hub-app
-        version: blue
+        version: production
     spec:
       containers:
       - name: site

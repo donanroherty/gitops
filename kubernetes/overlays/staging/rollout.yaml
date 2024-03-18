@@ -1,5 +1,5 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 metadata:
   name: service-hub-app
   namespace: argocd
@@ -8,10 +8,12 @@ spec:
   selector:
     matchLabels:
       app: service-hub-app
+      version: staging
   template:
     metadata:
       labels:
         app: service-hub-app
+        version: staging
     spec:
       containers:
       - name: site
@@ -19,4 +21,9 @@ spec:
         ports:
         - containerPort: 3000
       imagePullSecrets:
-      - name: ghcr-auth
+        - name: ghcr-auth
+  # strategy:
+  #   blueGreen:
+  #     activeService: rollout-bluegreen-active
+  #     previewService: rollout-bluegreen-preview
+  #     autoPromotionEnabled: false
