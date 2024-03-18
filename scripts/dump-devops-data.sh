@@ -16,7 +16,7 @@ process_files() {
         echo "---" >> output.txt
         cat "$file" | head -n 10 >> output.txt
         echo >> output.txt
-    done < <(find "$folder" -maxdepth 4 -type f -print0 | grep -zZvFf <(printf "%s\n" "${exclude_patterns[@]}"))
+    done < <(find "$folder" -maxdepth 10 -type f -print0 | grep -zZvFf <(printf "%s\n" "${exclude_patterns[@]}"))
     
     echo >> output.txt
 }
