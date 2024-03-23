@@ -3,7 +3,8 @@ kind: Kustomization
 metadata:
   namespace: argocd
 resources:
-  - rollout.yaml
+  - manifests/apps/service-hub/production/rollout.yaml
 images:
   - name: ghcr.io/donanroherty/turborepo-github-actions/site
     newTag: release-v1.0.2
+

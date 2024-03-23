@@ -55,7 +55,12 @@ def main():
         "terraform/terraform.tfstate",
         "terraform/terraform.tfstate.backup",
         "scripts/dump-file-content.py",
+        "README.md"
     ]
+
+    # delete existing file
+    if os.path.exists("output.txt"):
+        os.remove("output.txt")
 
     # Process files for the root folder and its subfolders
     root_folder = "."

@@ -7,3 +7,6 @@ terraform.tfstate*
 kubernetes/secrets/ghcr-auth-secret.yaml
 
 cluster-keys.json
+
+env.sh
+*.tfvars
