@@ -11,7 +11,7 @@ load_dotenv(dotenv_path=dotenv_path)
 
 
 context_name = os.environ['CLUSTER_NAME']
-tunnel_address = os.environ['TUNNEL_ADDRESS']
+cluster_address = os.environ['CLUSTER_ADDRESS']
 cluster_port = os.environ['CLUSTER_PORT']
 output_file = "minimal-kubeconfig.yaml"
 
@@ -32,7 +32,7 @@ cluster = next((c for c in kubeconfig["clusters"] if c["name"] == cluster_name),
 user = next((u for u in kubeconfig["users"] if u["name"] == user_name), None)
 
 # Update the cluster server address
-cluster["cluster"]["server"] = f"https://{tunnel_address}:{cluster_port}"
+cluster["cluster"]["server"] = f"https://{cluster_address}:{cluster_port}"
 
 # Create the minimal kubeconfig
 minimal_kubeconfig = {

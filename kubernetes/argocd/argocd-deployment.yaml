@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argocd-server
+  namespace: argocd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: argocd-server
+  template:
+    metadata:
+      labels:
+        app: argocd-server
+    spec:
+      containers:
+        - name: argocd-server
+          image: argoproj/argocd:v2.3.0
+          command:
+            - argocd-server
+            - --insecure
+            - --staticassets
+            - /shared/app
+          envFrom:
+            - secretRef:
+                name: argocd-vault-secrets
+          ports:
+            - containerPort: 8080
+            - containerPort: 8083
+          volumeMounts:
+            - name: static-files
+              mountPath: /shared/app
+      volumes:
+        - name: static-files
+          emptyDir: {}
