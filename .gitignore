@@ -4,9 +4,10 @@ output.txt
 .terraform.lock.hcl
 terraform.tfstate*
 
-kubernetes/secrets/ghcr-auth-secret.yaml
+manifests/sealed-secrets/ghcr-auth-secret.yaml
 
 cluster-keys.json
 
 env.sh
-*.tfvars
+terraform.tfvars
+sealed-secrets-pub.pem
